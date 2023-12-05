@@ -31,11 +31,12 @@ def register_form(request):
             us=usr.save(commit=False)
             us.set_password(usr.cleaned_data['password'])
             us.save()
-            ''' send_mail('register_form',
+            send_mail('register_form',
                       'Your Register successfully',
                       'vasaveesreerama@gmail.com',
                       [us.email],
-                      fail_silently=False)'''
+                      fail_silently=False
+                      )
             return HttpResponseRedirect(reverse('log_form'))
         else:
             messages.success(request, 'username already there')
